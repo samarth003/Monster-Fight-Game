@@ -14,9 +14,9 @@ public:
         One_Horned_Kraken
     };
 
-
     Monsters(MonType type, const std::string& name)
-    :m_MonsterType {type}, m_MonsterName {name}, m_MonBaseHP {MonBaseHealth(type)}{}
+    :m_MonsterType {type}, m_MonsterName {name}
+    ,m_MonBaseHP {MonBaseHealth(type)}, m_MonHP {m_MonBaseHP}{}
 
     /**
      * Assigns Base HP for all monsters 
@@ -44,10 +44,12 @@ public:
      */
     virtual int MonBasicAttack() = 0; 
     virtual int MonChargedAttack() = 0;
-    virtual void MonDefensiveShield() = 0; 
+    virtual int MonDefensiveShield() = 0;
+    virtual int MonDamageTaken(int DmgReceived) = 0; 
 
 protected:
     MonType m_MonsterType {};
     std::string m_MonsterName {};
     int m_MonBaseHP  {};
+    int m_MonHP {};
 };
