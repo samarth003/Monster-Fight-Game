@@ -45,7 +45,13 @@ public:
     virtual int MonBasicAttack() = 0; 
     virtual int MonChargedAttack() = 0;
     virtual int MonDefensiveShield() = 0;
-    virtual int MonDamageTaken(int DmgReceived) = 0; 
+    virtual void MonDamageTaken(int DmgReceived) = 0;
+
+    virtual bool IsDefeated() = 0;
+    virtual int GetBaseHP() = 0;
+    virtual int GetMonHPLeft() = 0;  
+    virtual std::string& GetMonName() = 0;
+
 
 protected:
     MonType m_MonsterType {};

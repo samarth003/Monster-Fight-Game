@@ -20,8 +20,11 @@ public:
         MAX_EN = 100                    //Maximum energy 
     };
 
-    int GetBaseHP();
+    int GetBaseHP() override;
+    int GetMonHPLeft() override;
     int GetEnergyLeft();
+    bool IsDefeated() override;
+    std::string& GetMonName() override;
 
     /**MOVESETS FOR DRAGON
      * Basic Attack
@@ -46,9 +49,9 @@ public:
     /**Damage taken
      * - Get DMG stats BA or CHA to calculate
      * - left over health 
-     * - Returns m_MonHP 
+     * - Returns none
      */
-    int MonDamageTaken(int DmgReceived) override;
+    void MonDamageTaken(int DmgReceived) override;
     
 private:
     const int m_BADmg {};

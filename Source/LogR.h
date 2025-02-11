@@ -14,6 +14,7 @@ public:
     };
 
     void ErrorLog(LogErr error);
+    void printMsg(const std::string& message);
 private:
     static void printError(LogErr error, const std::string& message);
 };

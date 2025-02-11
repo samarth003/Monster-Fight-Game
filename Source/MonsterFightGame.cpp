@@ -3,20 +3,54 @@
 #include "Dragons.h"
 
 
+void MonBattle(Monsters& Mon1, Monsters& Mon2)
+{
+    int MoveNo {0};
+    int AttackDmg {0};
+    int BattleTurn = 1;
+
+    LogR Logger; 
+
+    while(!Mon1.IsDefeated() && !Mon2.IsDefeated())
+    {
+        Monsters& Attacker = (BattleTurn % 2 == 1)? Mon1 : Mon2;
+        Monsters& Defender = (BattleTurn % 2 == 1)? Mon2 : Mon1;
+        
+        std::cout << Attacker.GetMonName() << " has " << Attacker.GetMonHPLeft() << " HP" << std::endl;
+        std::cout << Defender.GetMonName() << " has " << Defender.GetMonHPLeft() << " HP" << std::endl;       
+
+        Logger.printMsg("What moveset you want to use?\
+                        (1) BA, (2) CHA or (3) Regen"); 
+        std::cin >> MoveNo;
+
+        if(MoveNo == 1)
+            AttackDmg = Attacker.MonBasicAttack(); 
+        else if(MoveNo == 2)
+            AttackDmg = Attacker.MonChargedAttack();
+        else if(MoveNo == 3)
+            AttackDmg = Attacker.MonDefensiveShield();
+        else
+            Logger.printMsg("No moveset selected");
+
+        if(AttackDmg <= 0)
+            AttackDmg = 0; 
+        Defender.MonDamageTaken(AttackDmg); 
+
+        BattleTurn++;
+    }
+    std::cout << "Fight Over! Winner: "
+              << (Mon1.IsDefeated() ? Mon2.GetMonName() : Mon1.GetMonName()) << std::endl;
+}
+
 int main()
 {
     int MonHealth {};
     int DmgStat {0};
-    const std::string MonName = "Gecko"; 
-    Dragons Dragon(Monsters::Three_Headed_Dragon, MonName); 
 
-    MonHealth = Dragon.GetBaseHP();
-    std::cout << MonName << " has " << MonHealth << " HP Left" << std::endl;
+    Dragons Dragon(Monsters::Three_Headed_Dragon, "Gecko"); 
+    Dragons DragonKing(Monsters::Three_Headed_Dragon, "Smaug");
 
-    DmgStat = Dragon.MonBasicAttack();
-    DmgStat = Dragon.MonChargedAttack();
-    if(DmgStat > 0)
-        MonHealth = Dragon.MonDamageTaken(DmgStat);
-    std::cout << MonName << " has " << MonHealth << " HP Left" << std::endl;
+    MonBattle(Dragon, DragonKing);
+
     return 0;
 }

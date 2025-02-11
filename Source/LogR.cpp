@@ -24,6 +24,11 @@ void LogR::ErrorLog(LogErr error)
     printError(error, ErrorMessage);
 }
 
+void LogR::printMsg(const std::string& message)
+{
+    std::cout << message << std::endl;
+}
+
 void LogR::printError(LogErr errorNo, const std::string& message)
 {
     std::cout << "[E" << errorNo << "]: "  << message << std::endl;
