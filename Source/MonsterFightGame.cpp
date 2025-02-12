@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "..\Header\Dragons.h"
+#include "Dragons.h"
 
 
 void MonBattle(Monsters& Mon1, Monsters& Mon2)
