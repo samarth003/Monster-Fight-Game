@@ -15,8 +15,10 @@ void LogR::ErrorLog(LogErr error)
             break;
         case ERR_MAX_EN:
             ErrorMessage = "At Max Energy already ";
+            break;
         case ERR_NONE:
             ErrorMessage = "No error detected ";
+            break;
         default:
             ErrorMessage = "Unidentified occurence";
             break;
@@ -24,9 +26,17 @@ void LogR::ErrorLog(LogErr error)
     printError(error, ErrorMessage);
 }
 
-void LogR::printMsg(const std::string& message)
+void LogR::printMsg(const std::string& message, LogStat stat, std::optional<int> statValue)
 {
-    std::cout << message << std::endl;
+    if(statValue.has_value())
+    {
+        if(stat == DAMAGE)
+            std::cout << message << " took " << *statValue << " damage" << std::endl;
+        else
+            std::cout << message << " has " << *statValue << " HP" << std::endl;
+    }
+    else
+        std::cout << message << std::endl;
 }
 
 void LogR::printError(LogErr errorNo, const std::string& message)
