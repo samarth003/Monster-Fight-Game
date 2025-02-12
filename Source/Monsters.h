@@ -1,8 +1,9 @@
 #pragma once
 
 #include<iostream>
+#include "LogR.h"
 
-class Monsters
+class Monsters : public LogR 
 {
 public:
     enum MonType
@@ -14,9 +15,7 @@ public:
         One_Horned_Kraken
     };
 
-    Monsters(MonType type, const std::string& name)
-    :m_MonsterType {type}, m_MonsterName {name}
-    ,m_MonBaseHP {MonBaseHealth(type)}, m_MonHP {m_MonBaseHP}{}
+    Monsters(MonType type, const std::string& name, int basicAtkDmg, int chargedAtkDmg, int initialEnergy);
 
     /**
      * Assigns Base HP for all monsters 
@@ -34,28 +33,59 @@ public:
         }
     }
 
-    /**SIMPLE MOVESETS
-     * 1 Basic attack 
-     * basic attack will return damage to be dealt and disperse energy used for charged move 
-     * 1 Charged attack
-     * charged attack will return damage to be dealt once the energy is charged completely. 
-     * 1 Defense shield 
-     * This will not have damage dealt but will increase the charged energy for moveset
+    /**Basic Attack
+     * - Check for Minimum Energy requirement for the move
+     * - Once move is performed, substract energy used for the move
+     * - If energy requirement not met, print error log and return -1
+     * - Otherwise, return attack damage dealt
+     *  */   
+    int MonBasicAttack();
+
+    /**Charged Attack
+     * - Check for Minimum Energy requirement for the move
+     * - Once move is performed, substract energy used for the move
+     * - If energy requirement not met, print error log and return -1
+     * - Otherwise, return attack damage dealt
+     *  */    
+    int MonChargedAttack();
+
+    /**Shield and Regen
+     * - Check if Max energy is already achieved
+     * - If not, revitalize the monster with the difference and return 0
+     * - Otherwise, print error log and return -1
+     *  */
+    int MonDefensiveShield();
+
+    /**Damage Taken
+     * - Update monster HP with damage received 
+     * - If Damage received > HP left, then make HP 0 
      */
-    virtual int MonBasicAttack() = 0; 
-    virtual int MonChargedAttack() = 0;
-    virtual int MonDefensiveShield() = 0;
-    virtual void MonDamageTaken(int DmgReceived) = 0;
+    void MonDamageTaken(int DmgReceived);
 
-    virtual bool IsDefeated() = 0;
-    virtual int GetBaseHP() = 0;
-    virtual int GetMonHPLeft() = 0;  
-    virtual std::string& GetMonName() = 0;
+    /**Check for Defeat
+     * - If Mon HP is <= 0, return true
+     * - Otherwise, false
+     */
+    bool IsDefeated();
 
+    int GetBaseHP();
+    int GetMonHPLeft();  
+    std::string& GetMonName();
+
+    virtual int GetMinEnergyRequired() = 0;
+    virtual int GetDissipatedEnergyBA() = 0;
+    virtual int GetRequiredCHAEnergy() = 0;
+    virtual int GetEnergyUsedCHA() = 0;
+    virtual int GetMaxEnergy() = 0;
+    virtual int GetRevitEnergy() = 0;
 
 protected:
-    MonType m_MonsterType {};
-    std::string m_MonsterName {};
-    int m_MonBaseHP  {};
-    int m_MonHP {};
+    MonType m_MonsterType {};               //Monster Type
+    std::string m_MonsterName {};           //Name of Monster
+    int m_MonBaseHP  {};                    //Base HP 
+    int m_MonHP {};                         //HP left after receiving Damage
+
+    int m_BADmg {};                         //Basic Attack Damage
+    int m_CHADmg {};                        //Charged Attack Damage
+    int m_EnergyLeft {};                    //Energy Left for the move 
 };
