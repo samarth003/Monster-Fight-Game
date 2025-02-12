@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 
-#include "Dragons.h"
+#include "..\Header\Dragons.h"
 
 Dragons::Dragons(MonType type, const std::string& name)
         : Monsters(type, name, BA_DMG, CHA_DMG, BASE_EN) 

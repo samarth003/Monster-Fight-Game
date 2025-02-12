@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "LogR.h"
+#include "..\Header\LogR.h"
 
 void LogR::ErrorLog(LogErr error)
 {

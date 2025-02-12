@@ -1,6 +1,6 @@
 #include<iostream>
 
-#include"Monsters.h"
+#include "..\Header\Monsters.h"
 
 Monsters:: Monsters(MonType type, const std::string& name, int basicAtkDmg, int chargedAtkDmg, int initialEnergy)
             :m_MonsterType {type}, m_MonsterName {name}, m_BADmg {basicAtkDmg}
