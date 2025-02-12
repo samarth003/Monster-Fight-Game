@@ -16,8 +16,8 @@ void MonBattle(Monsters& Mon1, Monsters& Mon2)
         Monsters& Attacker = (BattleTurn % 2 == 1)? Mon1 : Mon2;
         Monsters& Defender = (BattleTurn % 2 == 1)? Mon2 : Mon1;
         
-        std::cout << Attacker.GetMonName() << " has " << Attacker.GetMonHPLeft() << " HP" << std::endl;
-        std::cout << Defender.GetMonName() << " has " << Defender.GetMonHPLeft() << " HP" << std::endl;       
+        Logger.printMsg(Attacker.GetMonName(), Logger.HEALTH ,Attacker.GetMonHPLeft());
+        Logger.printMsg(Defender.GetMonName(), Logger.HEALTH ,Defender.GetMonHPLeft());    
 
         Logger.printMsg("What moveset you want to use?\
                         (1) BA, (2) CHA or (3) Regen"); 
