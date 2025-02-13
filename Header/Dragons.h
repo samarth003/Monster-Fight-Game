@@ -8,6 +8,7 @@ class Dragons : public Monsters
 {
 public:
     Dragons(MonType type, const std::string& name);
+    ~Dragons(){};
 
     enum Energy
     {

@@ -34,6 +34,9 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
     test_monsters
     tests/test_dragon.cpp
+    Source/Dragons.cpp
+    Source/Monsters.cpp
+    Source/LogR.cpp
 )
 #Link against GoogleTest
 target_link_libraries(test_monsters GTest::gtest_main)

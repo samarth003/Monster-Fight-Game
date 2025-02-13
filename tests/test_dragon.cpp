@@ -1,14 +1,14 @@
 #include<gtest/gtest.h>
-// #include "Dragons.h"
+#include "Dragons.h"
 
-// TEST(DragonTest, BA_Damage)
-// {
-//     Dragons Dragon(Monsters::Three_Headed_Dragon, "Toothless");
-//     EXPECT_GT(Dragon.MonBasicAttack(), 0);
-// }
-
-TEST(HelloGTest, BasicAssertion)
+TEST(DragonTest, MonName)
 {
-    EXPECT_STRNE("Hello", "World");
-    EXPECT_EQ(7*6, 42);
+    Dragons Drogon(Monsters::Three_Headed_Dragon, "Toothless");
+    EXPECT_EQ(Drogon.GetMonName(), std::string("Toothless"));
+}
+
+TEST(DragonTest, BasicAtkDamage)
+{
+    Dragons Drogon(Monsters::Three_Headed_Dragon, "Toothless");
+    EXPECT_GT(Drogon.MonBasicAttack(), 0);
 }
