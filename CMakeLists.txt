@@ -14,3 +14,36 @@ add_executable(MonsterBattle
     Source/MonsterFightGame.cpp
 )
 
+enable_testing()
+
+#Fetch content module to download GoogleTest
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG        v1.16.0
+)
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+#Fetch GoogleTest and make it available for use
+FetchContent_MakeAvailable(googletest)
+
+#add test files here
+add_executable(
+    test_monsters
+    tests/test_dragon.cpp
+    Source/Dragons.cpp
+    Source/Monsters.cpp
+    Source/LogR.cpp
+)
+#Link against GoogleTest
+target_link_libraries(test_monsters GTest::gtest_main)
+
+# Register tests
+include(GoogleTest)
+gtest_discover_tests(test_monsters)
+
+
+
