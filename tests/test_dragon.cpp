@@ -1,14 +1,42 @@
 #include<gtest/gtest.h>
 #include "Dragons.h"
 
-TEST(DragonTest, MonName)
+class DragonTest : public ::testing::Test
 {
-    Dragons Drogon(Monsters::Three_Headed_Dragon, "Toothless");
+protected:
+    Dragons Drogon;
+
+    DragonTest()
+    :Drogon(Monsters::Three_Headed_Dragon, "Toothless")
+    {
+
+    }
+};
+
+TEST_F(DragonTest, MonName)
+{
     EXPECT_EQ(Drogon.GetMonName(), std::string("Toothless"));
 }
 
-TEST(DragonTest, BasicAtkDamage)
+TEST_F(DragonTest, BasicAtkDamage)
 {
-    Dragons Drogon(Monsters::Three_Headed_Dragon, "Toothless");
     EXPECT_GT(Drogon.MonBasicAttack(), 0);
+}
+
+TEST_F(DragonTest, FailedChargedAtk)
+{
+    EXPECT_LT(Drogon.MonChargedAttack(), 0);
+}
+
+TEST_F(DragonTest, DamageTaken)
+{
+    int dmg {50};
+    int hp = Drogon.GetMonHPLeft();
+    Drogon.MonDamageTaken(dmg);
+    EXPECT_EQ(Drogon.GetMonHPLeft(), (hp-dmg));
+}
+
+TEST_F(DragonTest, ShieldRegen)
+{
+    EXPECT_EQ(Drogon.MonDefensiveShield(), 0);
 }
