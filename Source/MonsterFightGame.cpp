@@ -133,12 +133,16 @@ void MonSelection(std::vector<Monsters*>& roster, Monsters*& Mon1, Monsters*& Mo
 
 void CreateRoster(std::vector<Monsters*>& roster)
 {
+    LogR logger;
     //Create a vector database for all monsters here 
-
-    roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Gecko"));
-    roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Smaug"));
-    roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Glaurung"));
-
+    if(roster.size() <= 0)
+    {
+        roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Gecko"));
+        roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Smaug"));
+        roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Glaurung"));
+    }
+    else
+        logger.printMsg("Roster already created");
 }
 
 #ifndef UNIT_TEST

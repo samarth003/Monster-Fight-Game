@@ -61,7 +61,6 @@ protected:
 //Roster Creation
 TEST_F(MonsterFightGame, MonsterFightGame_RosterSize_Test)
 {
-    std::vector<Monsters*> Roster;
     CreateRoster(Roster);
     EXPECT_EQ(Roster.size(), m_MaxRoster);
 }
