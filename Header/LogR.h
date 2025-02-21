@@ -11,7 +11,8 @@ public:
         ERR_NONE=400,
         ERR_NO_EN_BA,
         ERR_NO_EN_CHA,
-        ERR_MAX_EN
+        ERR_MAX_EN,
+        ERR_APP_EXIT
     };
 
     enum LogStat

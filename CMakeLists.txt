@@ -34,12 +34,15 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
     test_monsters
     tests/test_dragon.cpp
+    tests/test_monsterfightgame.cpp
     Source/Dragons.cpp
     Source/Monsters.cpp
     Source/LogR.cpp
+    Source/MonsterFightGame.cpp
 )
 #Link against GoogleTest
-target_link_libraries(test_monsters GTest::gtest_main)
+target_link_libraries(test_monsters GTest::gmock GTest::gtest_main)
+target_compile_definitions(test_monsters PRIVATE UNIT_TEST)
 
 # Register tests
 include(GoogleTest)
