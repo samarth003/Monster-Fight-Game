@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include<cstdlib>
+#include <bits/stdc++.h>
 
+#include "MonsterFightGame.h"
 #include "Dragons.h"
 
 #define MAX_RETRIES 3
@@ -75,12 +77,14 @@ void MonSelection(std::vector<Monsters*>& roster, Monsters*& Mon1, Monsters*& Mo
     int choice1 = 1;
     int choice2 = 1;
     int retry_selection = 3;
-    std::string BattleBot {'N'};
+    std::string BattleBot {"N"};
     LogR logger;
 
     logger.printMsg("Battle against Computer [Y/N] ?");
     std::cin >> BattleBot;
-    if(BattleBot == std::string("Y"))
+    std::transform(BattleBot.begin(), BattleBot.end(), BattleBot.begin(), ::toupper);
+
+    if(BattleBot == "Y")
         PlayBot = true;
 
     logger.printMsg("Select Monsters for Battle");
@@ -106,17 +110,21 @@ void MonSelection(std::vector<Monsters*>& roster, Monsters*& Mon1, Monsters*& Mo
             std::cin >> choice2;
         }
 
-        if((choice1 == 0) || (choice2 == 0))
+        if((choice1>0 && choice1<=roster.size()) && choice2>0 && choice2<=roster.size())
+            break;
+        else
         {
             logger.printMsg("Provide a valid ID associated with Monster");
             retry_selection--;
         }
-    } while (retry_selection < MAX_RETRIES);
+    } while (retry_selection>0);
 
     if(retry_selection <= 0)
     {
-        logger.printMsg("Selection timeout. Exiting battle simulation..");
+        logger.ErrorLog(logger.ERR_APP_EXIT);
+#ifndef UNIT_TEST        
         ExitBattle(roster);
+#endif        
     }
 
     Mon1 = roster[choice1-1];
@@ -133,6 +141,7 @@ void CreateRoster(std::vector<Monsters*>& roster)
 
 }
 
+#ifndef UNIT_TEST
 int main()
 {
     int MonHealth {};
@@ -154,3 +163,4 @@ int main()
 
     return 0;
 }
+#endif
