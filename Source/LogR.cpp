@@ -19,6 +19,9 @@ void LogR::ErrorLog(LogErr error)
         case ERR_NONE:
             ErrorMessage = "No error detected ";
             break;
+        case ERR_APP_EXIT:
+            ErrorMessage = "Max retries limit. Exiting application..";
+            break;
         default:
             ErrorMessage = "Unidentified occurence";
             break;
