@@ -7,6 +7,7 @@
 
 #include "MonsterFightGame.h"
 #include "Dragons.h"
+#include "Spiders.h"
 
 class MonsterFightGame : public ::testing::Test
 {
@@ -27,8 +28,8 @@ protected:
     //Run before each test
     void SetUp() override
     {
+        Roster.push_back(new Spiders(Monsters::Giant_Spider, "TickleClaw"));
         Roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Silo"));
-        Roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Kaos")); 
         Roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "IronClaw"));         
     }
 
@@ -72,7 +73,7 @@ TEST_F(MonsterFightGame, MonsterFightGame_SelectMonsterNoBot_Test)
     //user input "N"- No bot, 1-Select Silo, 3-IronClaw 
     SimulateMonSelection(UserInput);
 
-    EXPECT_EQ(Mon1->GetMonName(), "Silo");
+    EXPECT_EQ(Mon1->GetMonName(), "TickleClaw");
     EXPECT_EQ(Mon2->GetMonName(), "IronClaw");
     EXPECT_FALSE(PlayBot);
 }
@@ -85,7 +86,7 @@ TEST_F(MonsterFightGame, MonsterFightGame_SelectMonstersBot_Test)
     //user input "Y"- bot, 1-Select Silo
     SimulateMonSelection(UserInput);
 
-    EXPECT_EQ(Mon1->GetMonName(), "Silo");
+    EXPECT_EQ(Mon1->GetMonName(), "TickleClaw");
     EXPECT_TRUE(PlayBot);
 }
 
