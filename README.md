@@ -23,8 +23,23 @@ ________________________________________________________________________________
 >defense moves once energy requirement is fulfilled.
 >> ### Attack moves
 >>*Basic Attack*      - Counters opponent with a fast attack
+>>
 >>*Charged Attack*    - Counters opponent with a very strong attack 
 >> ### Defense moves
->>*Shield and Regen*  - In this state, Monster doesn't receive damage and replenishes energy 
+>>*Shield and Regen*  - In this state, Monster doesn't receive damage and replenishes energy
+
+## Platform Support
+>This game is supported for Single platform use - Windows
+
+## Assets
+
+## Game Expansion and Roadmap
+>**First phase**
+>>Terminal based application to support base level of user interaction and proper gameplay.
+>>Base Roster creation to support and verify monster selection
+>
+>**Second phase**
+>>Different Monster types support to play with and against. 
+>>A base UI based application for more immersive and interactive gameplay experience.    
 
 
