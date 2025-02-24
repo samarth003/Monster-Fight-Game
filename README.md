@@ -18,6 +18,13 @@ ________________________________________________________________________________
 >>HP denotes Monster Health stats and Energy is required to perform a particular move.
 
 
-### Battle
->Turn based battle system where Attacker 
+## Battle
+>Turn based battle system where both Monsters will take turn to perfom their attack or 
+>defense moves once energy requirement is fulfilled.
+>> ### Attack moves
+>>*Basic Attack*      - Counters opponent with a fast attack
+>>*Charged Attack*    - Counters opponent with a very strong attack 
+>> ### Defense moves
+>>*Shield and Regen*  - In this state, Monster doesn't receive damage and replenishes energy 
+
 
