@@ -32,14 +32,17 @@ ________________________________________________________________________________
 >This game is supported for Single platform use - Windows
 
 ## Assets
+>*Current Release* | [v1.0.0]("https://github.com/samarth003/Monster-Fight-Game/releases/tag/v1.0.0")
 
 ## Game Expansion and Roadmap
 >**First phase**
->>Terminal based application to support base level of user interaction and proper gameplay.
->>Base Roster creation to support and verify monster selection
+>>1. Terminal based application to support base level of user interaction and proper gameplay.
+>>
+>>2. Base Roster creation to support and verify monster selection
 >
 >**Second phase**
->>Different Monster types support to play with and against. 
->>A base UI based application for more immersive and interactive gameplay experience.    
+>>1. Different Monster types support to play with and against.
+>> 
+>>2. A base UI based application for more immersive and interactive gameplay experience.    
 
 
