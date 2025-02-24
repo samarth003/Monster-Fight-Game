@@ -11,6 +11,7 @@ add_executable(MonsterBattle
     Source/LogR.cpp
     Source/Monsters.cpp
     Source/Dragons.cpp
+    Source/Spiders.cpp
     Source/MonsterFightGame.cpp
 )
 
@@ -34,8 +35,10 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
     test_monsters
     tests/test_dragon.cpp
+    tests/test_spider.cpp
     tests/test_monsterfightgame.cpp
     Source/Dragons.cpp
+    Source/Spiders.cpp
     Source/Monsters.cpp
     Source/LogR.cpp
     Source/MonsterFightGame.cpp
