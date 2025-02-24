@@ -5,9 +5,9 @@
 
 #include "MonsterFightGame.h"
 #include "Dragons.h"
+#include "Spiders.h"
 
 #define MAX_RETRIES 3
-#define MAX_MONSTERS 3
 #define MOVESET 3
 
 void ExitBattle(std::vector<Monsters*>& roster)
@@ -100,7 +100,7 @@ void MonSelection(std::vector<Monsters*>& roster, Monsters*& Mon1, Monsters*& Mo
         std::cin >> choice1;
         if(PlayBot)
         { 
-            choice2 = rand() % MAX_MONSTERS + 1; //range from 1 to 3
+            choice2 = rand() % roster.size() + 1; //range from 1 to MAX_MONSTERS
             logger.printMsg("Bot's Champion");
             std::cout << choice2 <<std::endl;
         }
@@ -137,9 +137,14 @@ void CreateRoster(std::vector<Monsters*>& roster)
     //Create a vector database for all monsters here 
     if(roster.size() <= 0)
     {
+        roster.push_back(new Spiders(Monsters::Giant_Spider, "Shelob"));
+        roster.push_back(new Spiders(Monsters::Giant_Spider, "Ungoliant"));
+        roster.push_back(new Spiders(Monsters::Giant_Spider, "Deathsting"));  
+
         roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Gecko"));
         roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Smaug"));
         roster.push_back(new Dragons(Monsters::Three_Headed_Dragon, "Glaurung"));
+
     }
     else
         logger.printMsg("Roster already created");
