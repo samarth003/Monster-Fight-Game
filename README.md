@@ -43,6 +43,7 @@ ________________________________________________________________________________
 >**Second phase**
 >> - [ ] Different Monster types support to play with and against.
 >> 
->> - [ ] A base UI based application for more immersive and interactive gameplay experience.    
+>> - [ ] A base 2D real time rendering based application for more immersive and interactive 
+>>gameplay experience.    
 
 
