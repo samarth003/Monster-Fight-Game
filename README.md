@@ -32,7 +32,7 @@ ________________________________________________________________________________
 >This game is supported for Single platform use - Windows
 
 ## Assets
->*Current Release* | [v1.0.0]("https://github.com/samarth003/Monster-Fight-Game/releases/tag/v1.0.0")
+>*Current Release* | [v1.0.0](https://github.com/samarth003/Monster-Fight-Game/releases/tag/v1.0.0)
 
 ## Game Expansion and Roadmap
 >**First phase**
