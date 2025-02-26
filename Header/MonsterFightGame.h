@@ -3,6 +3,7 @@
 #include<iostream>
 #include<vector>
 
+#include "RenderingGame.h"
 #include "Monsters.h"
 
 /**
@@ -24,12 +25,13 @@ void MonSelection(std::vector<Monsters*>& roster, Monsters*& Mon1, Monsters*& Mo
 
 /**
  * MonBattle()
- * @brief Turn based Battle system where it will alternate between 2 monsters move selection 
- * @param[in] Mon1      Reference to a Monsters object (can be any of the monster type defined)
- * @param[in] Mon2      Reference to a Monsters object (can be any of the monster type defined)
- * @param[in] PlayBot   Reference to a bool flag indicating if user wants to play with Bot  
+ * @brief Turn based Battle system where it will alternate between 2 monsters move selection
+ * @param[in] RndrGameWindow    Reference to 2D game rendering window 
+ * @param[in] Mon1              Reference to a Monsters object (can be any of the monster type defined)
+ * @param[in] Mon2              Reference to a Monsters object (can be any of the monster type defined)
+ * @param[in] PlayBot           Reference to a bool flag indicating if user wants to play with Bot  
  */
-void MonBattle(Monsters& Mon1, Monsters& Mon2, bool& PlayBot);
+void MonBattle(sf::RenderWindow& RndrGameWindow ,Monsters& Mon1, Monsters& Mon2, bool& PlayBot);
 
 /**
  * ExitBattle()
