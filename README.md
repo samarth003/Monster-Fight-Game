@@ -30,6 +30,10 @@ ________________________________________________________________________________
 
 ## Platform Support
 >This game is supported for Single platform use - Windows
+>>### Compiler
+>>g++ (Rev3, Built by MSYS2 project) 13.2.0
+>>### Graphics
+>>SFML v3.0.0
 
 ## Assets
 >*Current Release* | [v1.0.0](https://github.com/samarth003/Monster-Fight-Game/releases/tag/v1.0.0)
