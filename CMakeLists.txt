@@ -53,15 +53,18 @@ add_executable(
     tests/test_dragon.cpp
     tests/test_spider.cpp
     tests/test_monsterfightgame.cpp
+    tests/test_rendergame.cpp
     Source/Dragons.cpp
     Source/Spiders.cpp
     Source/Monsters.cpp
     Source/LogR.cpp
     Source/MonsterFightGame.cpp
-    # Source/RenderingGame.cpp
+    Source/RenderingGame.cpp
 )
+
 #Link against GoogleTest
-target_link_libraries(test_monsters GTest::gmock GTest::gtest_main)
+# target_link_libraries(test_monsters GTest::gmock GTest::gtest_main)
+target_link_libraries(test_monsters PRIVATE SFML::Graphics SFML::Audio GTest::gmock GTest::gtest_main)
 target_compile_definitions(test_monsters PRIVATE UNIT_TEST)
 
 # Register tests
