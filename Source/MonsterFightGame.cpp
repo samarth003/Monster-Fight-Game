@@ -17,7 +17,7 @@ void ExitBattle(std::vector<Monsters*>& roster)
     std::exit(EXIT_SUCCESS);
 }
 
-void MonBattle(Monsters& Mon1, Monsters& Mon2, bool& PlayBot)
+void MonBattle(sf::RenderWindow& RndrGameWindow, Monsters& Mon1, Monsters& Mon2, bool& PlayBot)
 {
     int MoveNo {0};
     int AttackDmg {0};
@@ -33,6 +33,10 @@ void MonBattle(Monsters& Mon1, Monsters& Mon2, bool& PlayBot)
 
     while(!Mon1.IsDefeated() && !Mon2.IsDefeated())
     {
+        //Render the current battle state
+#ifndef UNIT_TEST        
+        UpdateGameWindow(RndrGameWindow, Mon1, Mon2);
+#endif
         Monsters& Attacker = (BattleTurn % 2 == 1)? Mon1 : Mon2;
         Monsters& Defender = (BattleTurn % 2 == 1)? Mon2 : Mon1;
         
@@ -155,7 +159,11 @@ int main()
 {
     int MonHealth {};
     int DmgStat {0};
+    int WindowWidth {800};
+    int WindowHeight {600};
+    std::string GameName = "Monster Battle Arena";
     bool PlayAgainstBot {false};
+    
 
     std::vector<Monsters*> roster; 
     Monsters* Monster1;
@@ -165,7 +173,9 @@ int main()
 
     MonSelection(roster, Monster1, Monsters2, PlayAgainstBot);
 
-    MonBattle(*Monster1, *Monsters2, PlayAgainstBot);
+    sf::RenderWindow GameWindow = CreateGameWindow(WindowWidth, WindowHeight, GameName);
+
+    MonBattle(GameWindow, *Monster1, *Monsters2, PlayAgainstBot);
 
     //Exit battle
     ExitBattle(roster);
