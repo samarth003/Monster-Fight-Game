@@ -7,20 +7,32 @@
 
 /**
  * CreateGameWindow()
- * @brief Creates a game window for 2D rendering 
+ * @brief Creates a game window for 2D rendering
+ * @param [in] WinWidth  window width 
+ * @param [in] WinHeight window height
+ * @param [in] GameName  name of the game on top of the window 
  * @return a 2D window object 
  */
-sf::RenderWindow CreateGameWindow();
+sf::RenderWindow CreateGameWindow(int WinWidth, int WinHeight, const std::string& GameName);
 
 /**
- * GetBackgndImage()
+ * LoadBackgndImage()
+ * @brief Loads the background image from /assets folder
+ * @param [in] backgroundTexture reference to texture object for background 
+ * @return True if background image is loaded successfully
+ *         False, otherwise
+ */
+bool LoadBackgndImage(sf::Texture& backgroundTexture);
+
+/**
+ * GetScaledBackgndImage()
  * @brief Checks if there a battleground image. If not, loads it and scales it to the
  *        size of the game window.
  * @param [in] RndrWindow        reference to 2d window object 
  * @param [in] backgroundTexture reference to texture object for background image
- * @return scaled dimenstions for background image  
+ * @return scaled dimensions for background image  
  */
-sf::Vector2f GetBackgndImage(sf::RenderWindow& RndrWindow, sf::Texture& backgroundTexture);
+sf::Vector2f GetScaledBackgndImage(sf::RenderWindow& RndrWindow, sf::Texture& backgroundTexture);
 
 /**
  * UpdateGameWindow()
