@@ -159,7 +159,11 @@ int main()
 {
     int MonHealth {};
     int DmgStat {0};
+    int WindowWidth {800};
+    int WindowHeight {600};
+    std::string GameName = "Monster Battle Arena";
     bool PlayAgainstBot {false};
+    
 
     std::vector<Monsters*> roster; 
     Monsters* Monster1;
@@ -169,7 +173,7 @@ int main()
 
     MonSelection(roster, Monster1, Monsters2, PlayAgainstBot);
 
-    sf::RenderWindow GameWindow = CreateGameWindow();
+    sf::RenderWindow GameWindow = CreateGameWindow(WindowWidth, WindowHeight, GameName);
 
     MonBattle(GameWindow, *Monster1, *Monsters2, PlayAgainstBot);
 
